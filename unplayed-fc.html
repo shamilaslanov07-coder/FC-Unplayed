@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FC Unplayed - Официальный сайт</title>
+    <style>
+        /* Основные стили */
+        :root {
+            --primary-black: #000000;
+            --primary-yellow: #FFD700;
+            --dark-gray: #1a1a1a;
+            --light-gray: #f5f5f5;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-gray);
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* Шапка сайта */
+        header {
+            background-color: var(--primary-black);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 60px;
+            margin-right: 15px;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            color: var(--primary-yellow);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-yellow);
+            background-color: rgba(255, 215, 0, 0.1);
+        }
+        
+        /* Герой секция */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1556056504-5c7696c4c28d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+        }
+        
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-yellow);
+            color: var(--primary-black);
+            padding: 12px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .btn:hover {
+            background-color: #ffed4a;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Секции */
+        section {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary-black);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 4px;
+            background-color: var(--primary-yellow);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* О клубе */
+        .about {
+            background-color: white;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Команда */
+        .team {
+            background-color: var(--dark-gray);
+            color: white;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .player-card {
+            background-color: var(--primary-black);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s;
+        }
+        
+        .player-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .player-image {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .player-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .player-card:hover .player-image img {
+            transform: scale(1.1);
+        }
+        
+        .player-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .player-info h3 {
+            color: var(--primary-yellow);
+            margin-bottom: 0.5rem;
+        }
+        
+        .player-info p {
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+        
+        /* Расписание */
+        .schedule {
+            background-color: white;
+        }
+        
+        .matches {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .match {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem;
+            border-bottom: 1px solid #eee;
+            transition: background-color 0.3s;
+        }
+        
+        .match:hover {
+            background-color: #f9f9f9;
+        }
+        
+        .match-date {
+            font-weight: bold;
+            color: var(--primary-black);
+        }
+        
+        .match-teams {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .team-logo {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-black);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-yellow);
+            font-weight: bold;
+        }
+        
+        .vs {
+            color: #777;
+        }
+        
+        .match-info {
+            text-align: right;
+        }
+        
+        /* Контакты */
+        .contact {
+            background-color: var(--primary-black);
+            color: white;
+        }
+        
+        .contact-content {
+            display: flex;
+            gap: 3rem;
+        }
+        
+        .contact-info, .contact-form {
+            flex: 1;
+        }
+        
+        .contact-info h3 {
+            color: var(--primary-yellow);
+            margin-bottom: 1rem;
+        }
+        
+        .contact-details {
+            margin-bottom: 2rem;
+        }
+        
+        .contact-details p {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-details i {
+            margin-right: 10px;
+            color: var(--primary-yellow);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--primary-yellow);
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #444;
+            border-radius: 5px;
+            background-color: #333;
+            color: white;
+        }
+        
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        /* Подвал */
+        footer {
+            background-color: var(--dark-gray);
+            color: #ccc;
+            padding: 3rem 0 1.5rem;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-logo h2 {
+            color: var(--primary-yellow);
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links h3,
+        .footer-social h3 {
+            color: var(--primary-yellow);
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-links ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links ul li a:hover {
+            color: var(--primary-yellow);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-icons a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: #444;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--primary-yellow);
+            color: var(--primary-black);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid #444;
+            font-size: 0.9rem;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo {
+                margin-bottom: 1rem;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0.5rem;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .about-content,
+            .contact-content {
+                flex-direction: column;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <!-- Логотип клуба -->
+                    <div style="width: 60px; height: 60px; background-color: var(--primary-yellow); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; color: var(--primary-black);">UFC</div>
+                    <h1>Unplayed FC</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#home">Главная</a></li>
+                        <li><a href="#about">О клубе</a></li>
+                        <li><a href="#team">Команда</a></li>
+                        <li><a href="#schedule">Расписание</a></li>
+                        <li><a href="#contact">Контакты</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Герой секция -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h2>Добро пожаловать в FC Unplayed</h2>
+            <p>Сила. Страсть. Победа. Наш клуб объединяет лучших игроков, стремящихся к новым вершинам в мире футбола.</p>
+            <a href="#about" class="btn">Узнать больше</a>
+        </div>
+    </section>
+
+    <!-- О клубе -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>О нашем клубе</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>История успеха</h3>
+                    <p>FC Unplayed был основан в 2010 году с целью создания сильной футбольной команды, способной конкурировать на высшем уровне. За годы существования клуб прошел путь от любительской лиги до профессионального футбола.</p>
+                    <p>Наша философия основана на развитии молодых талантов, тактической дисциплине и стремлении к победе в каждом матче. Черно-желтые цвета символизируют нашу силу, энергию и непредсказуемость на поле.</p>
+                    <p>Сегодня FC Unplayed - это не просто футбольный клуб, а настоящая семья, объединяющая игроков, тренеров и болельщиков.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1598880691456-ebbfd2e3ffc7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Стадион FC Unplayed">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Команда -->
+    <section class="team" id="team">
+        <div class="container">
+            <div class="section-title">
+                <h2>Наша команда</h2>
+            </div>
+            <div class="team-grid">
+                <!-- Игрок 1 -->
+                <div class="player-card">
+                    <div class="player-image">
+                        <img src="https://images.unsplash.com/photo-1560272564-c83b66b1ad12?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Алексей Иванов">
+                    </div>
+                    <div class="player-info">
+                        <h3>Алексей Иванов</h3>
+                        <p>Капитан команды</p>
+                        <p>Нападающий</p>
+                    </div>
+                </div>
+                
+                <!-- Игрок 2 -->
+                <div class="player-card">
+                    <div class="player-image">
+                        <img src="https://images.unsplash.com/photo-1553778263-73a83bab9b0e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Дмитрий Петров">
+                    </div>
+                    <div class="player-info">
+                        <h3>Дмитрий Петров</h3>
+                        <p>Вратарь</p>
+                    </div>
+                </div>
+                
+                <!-- Игрок 3 -->
+                <div class="player-card">
+                    <div class="player-image">
+                        <img src="https://images.unsplash.com/photo-1599058917765-a780eda07a3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Сергей Сидоров">
+                    </div>
+                    <div class="player-info">
+                        <h3>Сергей Сидоров</h3>
+                        <p>Полузащитник</p>
+                    </div>
+                </div>
+                
+                <!-- Игрок 4 -->
+                <div class="player-card">
+                    <div class="player-image">
+                        <img src="https://images.unsplash.com/photo-1521334884684-d80222895322?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Максим Козлов">
+                    </div>
+                    <div class="player-info">
+                        <h3>Максим Козлов</h3>
+                        <p>Защитник</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Расписание -->
+    <section class="schedule" id="schedule">
+        <div class="container">
+            <div class="section-title">
+                <h2>Ближайшие матчи</h2>
+            </div>
+            <div class="matches">
+                <!-- Матч 1 -->
+                <div class="match">
+                    <div class="match-date">
+                        15.10.2023
+                    </div>
+                    <div class="match-teams">
+                        <div class="team-logo">UFC</div>
+                        <div class="vs">vs</div>
+                        <div class="team-logo" style="background-color: #1a237e;">RIV</div>
+                    </div>
+                    <div class="match-info">
+                        <p>Стадион "Unplayed Arena"</p>
+                        <p>19:00</p>
+                    </div>
+                </div>
+                
+                <!-- Матч 2 -->
+                <div class="match">
+                    <div class="match-date">
+                        22.10.2023
+                    </div>
+                    <div class="match-teams">
+                        <div class="team-logo" style="background-color: #d32f2f;">OPP</div>
+                        <div class="vs">vs</div>
+                        <div class="team-logo">UFC</div>
+                    </div>
+                    <div class="match-info">
+                        <p>Городской стадион</p>
+                        <p>17:30</p>
+                    </div>
+                </div>
+                
+                <!-- Матч 3 -->
+                <div class="match">
+                    <div class="match-date">
+                        29.10.2023
+                    </div>
+                    <div class="match-teams">
+                        <div class="team-logo">UFC</div>
+                        <div class="vs">vs</div>
+                        <div class="team-logo" style="background-color: #388e3c;">LEG</div>
+                    </div>
+                    <div class="match-info">
+                        <p>Стадион "Unplayed Arena"</p>
+                        <p>20:00</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Контакты -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Свяжитесь с нами</h2>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Контактная информация</h3>
+                    <div class="contact-details">
+                        <p><i>📍</i> г. Город, ул. Футбольная, 15</p>
+                        <p><i>📞</i> +7 (123) 456-78-90</p>
+                        <p><i>✉️</i> info@unplayedfc.com</p>
+                    </div>
+                    <h3>Стадион</h3>
+                    <p>Наш домашний стадион "Unplayed Arena" расположен в центре города и вмещает до 15 000 зрителей.</p>
+                </div>
+                <div class="contact-form">
+                    <h3>Напишите нам</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Ваше имя</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Ваш email</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Сообщение</label>
+                            <textarea id="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Отправить</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Подвал -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>FC Unplayed</h2>
+                    <p>Сила в единстве, победа в игре!</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Быстрые ссылки</h3>
+                    <ul>
+                        <li><a href="#home">Главная</a></li>
+                        <li><a href="#about">О клубе</a></li>
+                        <li><a href="#team">Команда</a></li>
+                        <li><a href="#schedule">Расписание</a></li>
+                        <li><a href="#contact">Контакты</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h3>Мы в соцсетях</h3>
+                    <div class="social-icons">
+                        <a href="#"><i>FB</i></a>
+                        <a href="#"><i>IG</i></a>
+                        <a href="#"><i>TW</i></a>
+                        <a href="#"><i>YT</i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 FC Unplayed. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
